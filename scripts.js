@@ -21,13 +21,14 @@ const handleClick = (element) => {
 
   // this next line prevents an X being changed to an O or an O being changed to an X by...
   //  checking to see if the square clicked has anything in it, if not continue
+
+  // if the innerhtml for the element we selected is false (!)
+  // that means it's empty so I can add a marker (X or O)
+  // in other words, if there's not anything in my bucket, add here.
   if(!document.getElementById(element.id).innerHTML){
     addMarker(element.id)
   }
 }
-
-
-
 
 
 
@@ -48,8 +49,12 @@ const addMarker = (id) => {
   // @TODO-2.5: MIX & MATCH, You will need the following pieces of code to build that line:
   // = currentMarker
   // .getElementById(id)
-  // document
+  // --document
   // .innerHTML 
+
+  // put the value of the currentMarker into the selected html element
+
+  document.getElementById(id).innerHTML = currentMarker;
 
   changeMarker()
 }
@@ -93,8 +98,10 @@ const resetBoard = () => {
   // =
   // document
   // const
+
+  const squares = document.getElementsByTagName("TD")
   
-  // loops over the HTML Collection of TDs and clears out the Xs and Os
+  // loops over the HTML Collection of TDs and clears out the Xs and Os. No change needed here.
   for (i=0; i < squares.length; i++) {
 
     // will log out the id of each square as it loops over them.
